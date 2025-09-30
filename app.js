@@ -29,3 +29,4 @@ const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
 });
+app.use("/api/todos", todoRoutes);
