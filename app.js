@@ -1,31 +1,31 @@
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
+import express from "express";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const auth = require("./routes/auth");
-const list = require("./routes/list");
-
-require("./connection/conn"); // MongoDB connection
+import authRoutes from "./routes/auth.js";
+import listRoutes from "./routes/list.js";
+import "./connection/conn.js"; // MongoDB
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 
-// API routes (must be BEFORE the React fallback)
-app.use("/api/auth", auth);
-app.use("/api/list", list);
+// API Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/list", listRoutes);
 
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-// Fallback for React Router (refresh issue fix)
+// React SPA fallback for refresh
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 1000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
