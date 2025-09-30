@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -12,13 +11,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/app.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/$1"
-    }
+    { "src": "/api/(.*)", "dest": "/app.js" },
+    { "src": "/(.*)", "dest": "/frontend/dist/$1" }
   ]
 }
