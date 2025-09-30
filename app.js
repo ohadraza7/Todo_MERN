@@ -13,20 +13,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// API routes
+// API routes (must be BEFORE the React fallback)
 app.use("/api/auth", auth);
 app.use("/api/list", list);
 
-// ✅ Serve frontend (React Vite build)
-app.use(express.static(path.join(__dirname, "frontend", "dist")));
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-// ✅ Fallback for React Router (refresh issue fix)
+// Fallback for React Router (refresh issue fix)
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
 });
-app.use("/api/todos", todoRoutes);
