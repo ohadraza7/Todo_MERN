@@ -26,10 +26,10 @@ app.use("/api/auth", auth);
 app.use("/api/list", list);
 
 // ✅ Serve frontend (React Vite build)
-const frontendPath = path.join(__dirname, "frontend", "dist");
-app.use(express.static(frontendPath));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-app.get("*", (req, res) => {
+// ✅ Fallback for React Router (refresh issue fix)
+app.use((req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
