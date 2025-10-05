@@ -29,7 +29,7 @@ app.use("/api/list", list);
 app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
 // ✅ Fallback for React Router (refresh issue fix)
-app.get("/", (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
