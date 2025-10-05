@@ -4,5 +4,8 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "./", // ✅ This fixes the 404 problem
+  base: "./", // ✅ important for Vercel or any subfolder deploy
+  build: {
+    outDir: "dist",
+  },
 });
