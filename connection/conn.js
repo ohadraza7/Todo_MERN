@@ -12,4 +12,4 @@ const conn = async (req, res) => {
     res.status(200).json({ message: "not connected to DB" });
   }
 };
-conn();
+export default conn;

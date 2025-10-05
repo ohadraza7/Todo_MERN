@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
   res.send("✅ Backend running successfully on Vercel");
 });
 
+conn();
 // Routes
 app.use("/api/auth", auth);
 app.use("/api/list", list);
