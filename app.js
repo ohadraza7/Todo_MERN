@@ -6,18 +6,15 @@ import "./connection/conn.js"; // MongoDB connection
 
 const app = express();
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Routes
+app.use((req, res) => {
+  res.send("✅ Backend is running on Vercel");
+});
+
 app.use("/api/auth", auth);
 app.use("/api/list", list);
 
-// Optional: basic root route for testing
-app.get("/", (req, res) => {
-  res.send("Backend is running 🚀");
-});
-
-// ✅ Export the app for Vercel
+// 🚀 Export app — don't use app.listen()
 export default app;
