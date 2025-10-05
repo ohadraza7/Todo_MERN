@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const user = require("./user");
+import mongoose from "mongoose";
+// import user from "./user.js";
 const listschema = new mongoose.Schema(
   {
     title: {
@@ -20,4 +20,5 @@ const listschema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("List", listschema);
+const List = mongoose.model("List", listschema);
+export default List;

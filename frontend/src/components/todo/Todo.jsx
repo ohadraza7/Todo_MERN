@@ -51,6 +51,7 @@ const Todo = () => {
       if (Inputs.title === "" || Inputs.body === "") {
         toast.error("Please fill in all fields");
       } else {
+        alert("yes");
         await axios
           .post(`${window.location.origin}/api/list/addtask`, {
             title: Inputs.title,
@@ -59,6 +60,7 @@ const Todo = () => {
           })
           .then((response) => {
             setArray([...Array, response.data]);
+
             toast.success("Todo Added Successfully");
             setInputs({ title: "", body: "" });
             document.getElementById("body").style.display = "none";
@@ -74,7 +76,6 @@ const Todo = () => {
           .get(`${window.location.origin}/api/list/gettask/${id}`)
           .then((response) => {
             setArray(response.data.list);
-            // console.log(response.data.message);
           });
       };
       fetch();

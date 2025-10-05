@@ -19,7 +19,6 @@ const Signin = () => {
   };
   const submit = async (e) => {
     e.preventDefault();
-    console.log(Input);
 
     await axios
       .post(`${window.location.origin}/api/auth/login`, Input)
@@ -32,6 +31,7 @@ const Signin = () => {
           history("/todo");
         } else {
           alert(response.data.message);
+          console.log("error");
         }
         setInputs({ email: "", password: "" });
       });

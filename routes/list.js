@@ -1,6 +1,9 @@
-const router = require("express").Router();
-const user = require("../model/user");
-const List = require("../model/list");
+import express from "express";
+const router = express.Router();
+
+// import List from "../model/list.js";
+import user from "../model/user.js";
+import List from "../model/list.js";
 
 //add task
 router.post("/addtask", async (req, res) => {
@@ -68,4 +71,4 @@ router.get("/gettask/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
