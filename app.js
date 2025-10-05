@@ -26,11 +26,11 @@ app.use("/api/auth", auth);
 app.use("/api/list", list);
 
 // ✅ Serve frontend (React Vite build)
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
 // ✅ Fallback for React Router (refresh issue fix)
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 1000;
