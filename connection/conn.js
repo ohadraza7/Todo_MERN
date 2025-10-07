@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
-
 import dotenv from "dotenv";
-
 dotenv.config();
 const conn = async (req, res) => {
   try {
@@ -12,4 +10,4 @@ const conn = async (req, res) => {
     res.status(200).json({ message: "not connected to DB" });
   }
 };
-export default conn;
+conn();
